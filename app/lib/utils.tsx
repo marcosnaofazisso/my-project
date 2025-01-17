@@ -27,3 +27,12 @@ export const emptyListOf = (value: Array<string>): boolean => {
 export const listIsNotEmpty = (value: Array<string>): boolean => {
     return value && value.length >= 1;
 }
+
+export const cleanPath = (input: string): string => {
+    return input?.replace(/[^a-zA-Z0-9]/g, '')?.toLowerCase();
+}
+
+export const capitalizeFirstLetter = (input: string): string => {
+    if (!input) return input; 
+    return input.charAt(0).toUpperCase() + input.slice(1);
+};

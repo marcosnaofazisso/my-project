@@ -9,7 +9,7 @@ export default function SlugProject({ slug }: SlugProjectProps) {
     return (
         <div>
             <Breadcrumbs aria-label="breadcrumb">
-                <Link href="./" > Meus Projetos </Link>
+                <Link href="./" >Meus Projetos</Link>
                 <p className="text-purple">{slug}</p>
             </Breadcrumbs>
             <div className="flex flex-row justify-center items-center font-semibold">
