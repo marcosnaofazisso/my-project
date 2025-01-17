@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "start /B next dev --turbopack && npm run open-browser",
+    "dev": "npm run open-browser && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "open-browser": "npx open http://localhost:3000"
+    "start-browser": "npx serve out -p 3000",
+    "open-browser": "start http://localhost:3000"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
