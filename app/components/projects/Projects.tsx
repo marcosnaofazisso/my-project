@@ -16,16 +16,23 @@ import arrow from '../../../public/img/arrow.png'
 
 export default function Projects() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const { projects } = useStoreUser()
 
+    const filteredProjects = projects.filter((project) => project.toLowerCase().includes(searchTerm.toLowerCase()))
+
     const handleAddProject = () => {
         setIsModalOpen(true);
-    };
+    }
 
     const handleModalClose = () => {
         setIsModalOpen(false);
-    };
+    }
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    }
 
     return (
         <div className="bg-white p-4 rounded-lg">
@@ -35,21 +42,21 @@ export default function Projects() {
             </div>
 
             <div className='flex flex-row items-center gap-4 w-full'>
-                <ListItem disablePadding className={`border gray rounded-md text-primary w-full `}>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <SearchIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Faça sua busca..." />
-                    </ListItemButton>
-                </ListItem>
+                <input
+                    type="text"
+                    placeholder="Faça sua busca..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    className="border border-gray-300 rounded-md px-3 py-2 w-full mr-2 focus:outline-none focus:ring-1 focus:ring-purple"
+                />
                 <AddButton title={"Novo projeto"} onClick={handleAddProject} />
             </div>
 
             {emptyListOf(projects) && <DefaultBalloon />}
-            {emptyListOf(projects) && <Image src={arrow} alt="arrow" className='fixed top-[180px] right-[160px]'/>}
+            {emptyListOf(projects) && <Image src={arrow} alt="arrow" className='fixed top-[180px] right-[160px]' />}
             {emptyListOf(projects) && <EmptyProjects />}
-            {listIsNotEmpty(projects) && <ListProjects />}
+
+            {listIsNotEmpty(projects) && <ListProjects filteredProjects={filteredProjects} />}
 
             {isModalOpen && <Modal isOpen={isModalOpen} onClose={handleModalClose} />}
         </div>

@@ -5,9 +5,11 @@ interface UserState {
     name: string | null;
     email: string | null;
     projects: string[];
-    setUserData: (name: string | null, email: string | null) => void;
-    addProject: (projectName: string) => void;
-    isProjectAlreadyAdded: (projectName: string) => boolean;
+    setUserData: (name: string | null, email: string | null) => void
+    addProject: (projectName: string) => void
+    isProjectAlreadyAdded: (projectName: string) => boolean
+    clearUser: () => void
+
 }
 
 export const useStoreUser = create(
@@ -24,6 +26,8 @@ export const useStoreUser = create(
                 const state = get();
                 return state.projects.some((project) => project === projectName);
             },
+            clearUser: () =>
+                set({ name: null, email: null, projects: [] })
         }),
         {
             name: 'user-storage',

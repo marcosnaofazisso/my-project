@@ -22,7 +22,7 @@ export default function DrawerWrapper({ children }: Readonly<{ children: React.R
                         aria-label="open drawer"
                         onClick={toggleDrawer}
                     >
-                        <AutoAwesomeMosaicOutlinedIcon className='text-primary' />
+                        <AutoAwesomeMosaicOutlinedIcon className='hover:text-purple hover:cursor-pointer' />
                     </IconButton>
                 </div>
                 {children}

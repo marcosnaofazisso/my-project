@@ -9,7 +9,7 @@ import UnregisteredUser from "./unregistered-user/UnregisteredUser";
 
 export default function Home() {
 
-    const { name, email, setUserData } = useStoreUser();
+    const { name, email } = useStoreUser();
     const unregisteredUser = isNull(name) || isNull(email)
 
     return (

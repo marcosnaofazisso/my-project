@@ -33,6 +33,11 @@ export const cleanPath = (input: string): string => {
 }
 
 export const capitalizeFirstLetter = (input: string): string => {
-    if (!input) return input; 
+    if (!input) return input;
     return input.charAt(0).toUpperCase() + input.slice(1);
-};
+}
+
+export const isOptionSelected = (pathname: string, project: string) => {
+    const currentProject = pathname?.substring(pathname?.lastIndexOf('/') + 1);
+    return currentProject?.toLowerCase() === project?.toLowerCase();
+}
