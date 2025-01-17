@@ -1,4 +1,4 @@
-import { cleanPath } from '@/app/lib/utils';
+import { capitalizeFirstLetter, cleanPath } from '@/app/lib/utils';
 import { PATH_TO } from '@/app/routes/globalRoutes';
 import SelectProjectButton from '@/app/ui/buttons/project/SelectProject';
 import { useRouter } from 'next/navigation';
@@ -14,7 +14,7 @@ export default function ListProjects({ filteredProjects }: ListProjectsProps) {
         <div className='flex flex-row gap-2 flex-wrap max-w-[1400px] pt-6'>{filteredProjects?.map((project: string, index: number) => {
             return (
                 <div key={project} className='w-full max-w-[200px]'>
-                    <SelectProjectButton title={`${index + 1} - ${project}`} isSelected={false} icon={null} onClick={() => router.push(`${PATH_TO.projects}/${cleanPath(project)}`)} />
+                    <SelectProjectButton title={`${index + 1} - ${capitalizeFirstLetter(project)}`} isSelected={false} icon={null} onClick={() => router.push(`${PATH_TO.projects}/${cleanPath(project)}`)} />
                 </div>
             )
         })}

@@ -21,7 +21,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
     const handleAddProject = () => {
         if (projectNameRef.current) {
-            const newProjectName = projectNameRef.current.value;
+            const newProjectName = projectNameRef?.current?.value?.toLowerCase();
             if (isProjectAlreadyAdded(newProjectName)) {
                 setErrorMessage("Esse projeto já existe na sua lista.");
             } else {
