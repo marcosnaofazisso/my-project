@@ -10,4 +10,4 @@ COPY --from=builder /app /app
 RUN npm install --production
 EXPOSE 3000
 ENV NODE_ENV=production
-CMD ["npm", "start"] F
+CMD ["npm", "run", "start"]

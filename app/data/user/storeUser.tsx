@@ -1,16 +1,20 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
+interface Section {
+    name: string
+}
+
 interface UserState {
     name: string | null
     email: string | null
     projects: string[]
-    sections: Record<string, any[]>
+    sections: Record<string, Section[]>
     setUserData: (name: string | null, email: string | null) => void
     addProject: (projectName: string) => void
     isProjectAlreadyAdded: (projectName: string) => boolean
     clearUser: () => void
-    addSectionToProject: (projectName: string, section: any) => void
+    addSectionToProject: (projectName: string, section: Section) => void
 }
 
 export const useStoreUser = create(
@@ -24,37 +28,37 @@ export const useStoreUser = create(
                 set({ name, email }),
             addProject: (projectName: string) =>
                 set((state) => {
-                    const newSections = { ...state.sections, [projectName]: [] };
+                    const newSections = { ...state.sections, [projectName]: [] }
                     return {
                         projects: [...state.projects, projectName],
                         sections: newSections,
-                    };
+                    }
                 }),
             isProjectAlreadyAdded: (projectName: string) => {
-                const state = get();
-                return state.projects.includes(projectName);
+                const state = get()
+                return state.projects.includes(projectName)
             },
             clearUser: () =>
                 set({ name: null, email: null, projects: [], sections: {} }),
-            addSectionToProject: (projectName: string, section: any) => {
+            addSectionToProject: (projectName: string, section: Section) => {
                 set((state) => {
-                    const existingSections = state.sections[projectName] || [];
+                    const existingSections = state.sections[projectName] || []
                     const sectionExists = existingSections.some(
                         (existingSection) => existingSection.name === section.name
-                    );
+                    )
 
                     if (sectionExists) {
-                        console.log("Section already exists, not adding.");
-                        return state;
+                        console.log('Section already exists, not adding.')
+                        return state
                     }
 
                     const updatedSections = {
                         ...state.sections,
                         [projectName]: [...existingSections, section],
-                    };
+                    }
 
-                    return { sections: updatedSections };
-                });
+                    return { sections: updatedSections }
+                })
             },
         }),
         {
@@ -62,4 +66,4 @@ export const useStoreUser = create(
             storage: createJSONStorage(() => localStorage),
         }
     )
-);
+)

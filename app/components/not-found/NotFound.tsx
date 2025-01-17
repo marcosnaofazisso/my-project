@@ -26,7 +26,7 @@ export default function NotFound() {
         }
 
         return () => clearInterval(timer)
-    }, [countdown, router])
+    }, [countdown, router, clearUser])
 
     return (
         <div className="flex flex-col">

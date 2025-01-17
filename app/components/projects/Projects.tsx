@@ -2,17 +2,15 @@
 
 import { useStoreUser } from '@/app/data/user/storeUser';
 import { emptyListOf, listIsNotEmpty } from '@/app/lib/utils';
+import DefaultBalloon from '@/app/ui/balloons/DefaultBalloon';
 import AddButton from '@/app/ui/buttons/AddButton';
 import Modal from '@/app/ui/modals/Modal';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import SearchIcon from '@mui/icons-material/Search';
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import Image from 'next/image';
 import { useState } from 'react';
+import arrow from '../../../public/img/arrow.png';
 import ListProjects from './list-of-projects/ListProjects';
 import EmptyProjects from './no-projects/EmptyProjects';
-import DefaultBalloon from '@/app/ui/balloons/DefaultBalloon';
-import Image from 'next/image';
-import arrow from '../../../public/img/arrow.png'
 
 export default function Projects() {
     const [isModalOpen, setIsModalOpen] = useState(false);

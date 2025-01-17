@@ -1,8 +1,8 @@
-export const isNull = (value: any | null): value is null => {
+export const isNull = (value: unknown | null): value is null => {
     return value === null;
 }
 
-export const isNotNull = (value: any | null): value is any => {
+export const isNotNull = (value: unknown | null): value is unknown => {
     return value !== null
 }
 
@@ -14,11 +14,12 @@ export const stringIsEmpty = (value: string): boolean => {
     return value.trim().length === 0
 }
 
-export const objectIsEmpty = (value: object): boolean => {
-    return value && Object.keys(value).length === 0
+export const objectIsEmpty = (value: Record<string, unknown>): boolean => {
+    return value && Object.keys(value).length === 0;
 }
-export const objectIsNotEmpty = (value: object): boolean => {
-    return value && Object.keys(value).length > 0
+
+export const objectIsNotEmpty = (value: Record<string, unknown>): boolean => {
+    return value && Object.keys(value).length > 0;
 }
 
 export const emptyListOf = (value: Array<string>): boolean => {

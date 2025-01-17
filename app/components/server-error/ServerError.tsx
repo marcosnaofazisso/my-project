@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import serverErrorImage from '../public/img/server-error.png';
+import serverErrorImage from '../../../public/img/server-error.png';
 
 export default function ServerError() {
     return (
