@@ -6,7 +6,6 @@ import FolderIcon from '@mui/icons-material/Folder';
 import SearchIcon from '@mui/icons-material/Search';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import DrawerMenuHeader from './header/DrawerMenuHeader';
 import { menuContentMaxWidth, menuDefaultWidth } from './header/styles';
 
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
@@ -40,21 +39,21 @@ export default function DrawerMenu({ isDrawerOpen, handleDrawerToggle }: DrawerM
             }}
         >
             <List className="pt-4 pl-4">
-            <div className={`flex flex-row items-center gap-2 text-primary`}>
-            <Image
-                src={profileIcon}
-                alt="profile image"
-                width={40}
-                height={40}
-                className="rounded-full"
-            />
-            <p className="col-gray">Nome do usuário</p>
-            <KeyboardArrowDownOutlinedIcon />
-            <NotificationsNoneOutlinedIcon />
-            <IconButton>
-                <AutoAwesomeMosaicOutlinedIcon onClick={() => handleDrawerToggle()} />
-            </IconButton>
-        </div>
+                <div className={`flex flex-row items-center gap-2 text-primary`}>
+                    <Image
+                        src={profileIcon}
+                        alt="profile image"
+                        width={40}
+                        height={40}
+                        className="rounded-full"
+                    />
+                    <p className="col-gray">Nome do usuário</p>
+                    <KeyboardArrowDownOutlinedIcon />
+                    <NotificationsNoneOutlinedIcon />
+                    <IconButton onClick={handleDrawerToggle}>
+                        <AutoAwesomeMosaicOutlinedIcon />
+                    </IconButton>
+                </div>
                 {/* <DrawerMenuHeader handleDrawerToggle={handleDrawerToggle} /> */}
 
                 <div className={`pt-5 max-w-[${menuContentMaxWidth}]`}>

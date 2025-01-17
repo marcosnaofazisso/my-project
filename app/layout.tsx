@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import DrawerWrapper from "./components/drawer/DrawerWrapper";
 import "./globals.css";
 import { poppins } from "./styles/fonts/fonts";
-import DrawerWrapper from "./components/drawer/DrawerWrapper";
 
 export const metadata: Metadata = {
   title: "Teste Cubevis",
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const defaultLang = "pt-BR"
   return (
-    <html lang={defaultLang} suppressHydrationWarning>
-      <body className={`${poppins.variable} antialiased`} >
+    <html lang={defaultLang} >
+      <body className={`${poppins.variable} antialiased`} suppressHydrationWarning>
         <DrawerWrapper>
           {children}
         </DrawerWrapper>

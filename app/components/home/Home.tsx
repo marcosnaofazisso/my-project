@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import homeImage from "../../../public/img/welcome.png";
 
