@@ -20,3 +20,10 @@ export const objectIsEmpty = (value: object): boolean => {
 export const objectIsNotEmpty = (value: object): boolean => {
     return value && Object.keys(value).length > 0
 }
+
+export const emptyListOf = (value: Array<string>): boolean => {
+    return value && value.length === 0;
+}
+export const listIsNotEmpty = (value: Array<string>): boolean => {
+    return value && value.length >= 1;
+}

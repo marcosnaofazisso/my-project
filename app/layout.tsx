@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import DrawerWrapper from "./components/drawer/DrawerWrapper";
 import "./globals.css";
-import { poppins } from "./styles/fonts/fonts";
+import { poppins } from "./assets/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "Teste Cubevis",

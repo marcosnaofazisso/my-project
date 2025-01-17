@@ -1,15 +1,32 @@
+"use client"
+
+import { useStoreUser } from '@/app/data/user/storeUser';
+import { emptyListOf, listIsNotEmpty } from '@/app/lib/utils';
+import AddButton from '@/app/ui/buttons/AddButton';
+import Modal from '@/app/ui/modals/Modal';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import Image from 'next/image';
-import noProjectYet from '../../../public/img/search.png'
+import { useState } from 'react';
+import EmptyProjects from './no-projects/EmptyProjects';
+import ListProjects from './list-of-projects/ListProjects';
 
 export default function Projects() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { projects } = useStoreUser()
+
+    const handleAddProject = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleModalClose = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div className="bg-white p-4 rounded-lg">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold">Meus Projetos</h2>
-                <button className="bg-purple text-white px-4 py-2 rounded-md hover:bg-purpleDark">
-                    Novo Projeto +
-                </button>
+                <AddButton title={"Novo projeto"} onClick={handleAddProject} />
             </div>
 
             <div className="flex items-center mb-4">
@@ -21,15 +38,11 @@ export default function Projects() {
                 />
             </div>
 
-            <div className="flex flex-col items-center text-center">
-                <p className="mt-4 font-semibold text-lg">Parece que ainda não há nenhum projeto criado</p>
-                <Image
-                    src={noProjectYet}
-                    alt="Sem projetos ainda"
-                    width={300}
-                    height={300}
-                />
-            </div>
+            {emptyListOf(projects) && <EmptyProjects />}
+            {listIsNotEmpty(projects) && <ListProjects />}
+
+
+            {isModalOpen && <Modal isOpen={isModalOpen} onClose={handleModalClose} />}
         </div>
     );
 }

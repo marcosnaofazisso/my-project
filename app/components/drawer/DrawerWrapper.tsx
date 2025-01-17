@@ -2,22 +2,19 @@
 
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
 import { IconButton } from '@mui/material';
-import { useState } from 'react';
 
+import { useDrawerStore } from '@/app/data/drawer/storeDrawer';
 import Image from 'next/image';
 import profileIcon from '../../../public/img/profile.png';
 import DrawerMenu from './menu/DrawerMenu';
 
 export default function DrawerWrapper({ children }: Readonly<{ children: React.ReactNode }>) {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
-    const handleDrawerToggle = () => {
-        setIsDrawerOpen(prev => !prev);
-    };
+    const { toggleDrawer } = useDrawerStore()
 
     return (
         <div className="flex">
-            <DrawerMenu isDrawerOpen={isDrawerOpen} handleDrawerToggle={handleDrawerToggle} />
+            <DrawerMenu />
             <div className="w-full p-4">
                 <div className='flex flex-row items-center gap-2 p-4'>
                     <IconButton
@@ -25,7 +22,7 @@ export default function DrawerWrapper({ children }: Readonly<{ children: React.R
                         className="gray"
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={handleDrawerToggle}
+                        onClick={toggleDrawer}
                         sx={{
                             position: 'fixed',
                             top: 8,
