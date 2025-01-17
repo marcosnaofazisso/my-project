@@ -1,16 +1,7 @@
-"use client"
+import Home from "./components/home/Home";
 
-import { useRouter } from "next/navigation";
-
-export default function Home() {
-  const router = useRouter()
-
+export default function RootPage() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!</h1>
-
-      <button onClick={() => router.push("/blog")}>Go to blog</button>
-    </div>
+    <Home />
   );
 }
