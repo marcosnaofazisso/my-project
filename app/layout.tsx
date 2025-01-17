@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import DrawerWrapper from "./components/drawer/DrawerWrapper";
-import "./globals.css";
+import dynamic from "next/dynamic";
 import { poppins } from "./assets/fonts/fonts";
+import "./globals.css";
+
+const DrawerWrapper = dynamic(() => import("./components/drawer/DrawerWrapper"))
 
 export const metadata: Metadata = {
   title: "Teste Cubevis",

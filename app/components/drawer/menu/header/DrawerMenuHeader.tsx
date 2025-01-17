@@ -30,7 +30,7 @@ export default function DrawerMenuHeader(): React.ReactNode {
             <KeyboardArrowDownOutlinedIcon />
             <div className='ml-auto gap-2'>
                 <NotificationsNoneOutlinedIcon className='hover:text-purple hover:cursor-pointer' onClick={() => router.push(PATH_TO.notifications)} />
-                <IconButton onClick={toggleDrawer} className='hover:text-purple hover:cursor-pointer'>
+                <IconButton onClick={toggleDrawer} className='z-99 hover:text-purple hover:cursor-pointer'>
                     <AutoAwesomeMosaicOutlinedIcon />
                 </IconButton>
             </div>

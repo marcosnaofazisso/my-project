@@ -18,7 +18,7 @@ export default function DrawerWrapper({ children }: Readonly<{ children: React.R
                     <IconButton
                         edge="start"
                         color="inherit"
-                        className='fixed top-4 left-8 p-3 hover:text-purple'
+                        className='fixed z-99 top-4 left-8 p-3 hover:text-purple'
                         aria-label="open drawer"
                         onClick={toggleDrawer}
                     >
