@@ -9,6 +9,13 @@ import { useRouter } from 'next/navigation';
 import DrawerMenuHeader from './header/DrawerMenuHeader';
 import { menuContentMaxWidth, menuDefaultWidth } from './header/styles';
 
+import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import { IconButton } from '@mui/material';
+import Image from 'next/image';
+import profileIcon from '../../../../public/img/profile.png';
+
 interface DrawerMenuProps {
     isDrawerOpen: boolean;
     handleDrawerToggle: VoidFunction;
@@ -17,6 +24,7 @@ interface DrawerMenuProps {
 export default function DrawerMenu({ isDrawerOpen, handleDrawerToggle }: DrawerMenuProps): React.ReactNode {
 
     const router = useRouter();
+
     return (
         <Drawer
             variant="persistent"
@@ -32,7 +40,22 @@ export default function DrawerMenu({ isDrawerOpen, handleDrawerToggle }: DrawerM
             }}
         >
             <List className="pt-4 pl-4">
-                <DrawerMenuHeader handleDrawerToggle={handleDrawerToggle} />
+            <div className={`flex flex-row items-center gap-2 text-primary`}>
+            <Image
+                src={profileIcon}
+                alt="profile image"
+                width={40}
+                height={40}
+                className="rounded-full"
+            />
+            <p className="col-gray">Nome do usuário</p>
+            <KeyboardArrowDownOutlinedIcon />
+            <NotificationsNoneOutlinedIcon />
+            <IconButton>
+                <AutoAwesomeMosaicOutlinedIcon onClick={() => handleDrawerToggle()} />
+            </IconButton>
+        </div>
+                {/* <DrawerMenuHeader handleDrawerToggle={handleDrawerToggle} /> */}
 
                 <div className={`pt-5 max-w-[${menuContentMaxWidth}]`}>
                     <ListItem disablePadding className={`border gray rounded-md`}>

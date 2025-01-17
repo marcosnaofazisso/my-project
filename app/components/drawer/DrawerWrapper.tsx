@@ -12,7 +12,7 @@ export default function DrawerWrapper({ children }: Readonly<{ children: React.R
     const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
     const handleDrawerToggle = () => {
-        setIsDrawerOpen(!isDrawerOpen);
+        setIsDrawerOpen(prev => !prev);
     };
 
     return (
@@ -30,7 +30,8 @@ export default function DrawerWrapper({ children }: Readonly<{ children: React.R
                             position: 'fixed',
                             top: 8,
                             left: 8,
-                        }}>
+                        }}
+                    >
                         <Image
                             src={profileIcon}
                             alt="profile image"

@@ -22,10 +22,10 @@ export default function DrawerMenuHeader({ handleDrawerToggle }: DrawerMenuProps
                 className="rounded-full"
             />
             <p className="col-gray">Nome do usuário</p>
-            <KeyboardArrowDownOutlinedIcon/>
+            <KeyboardArrowDownOutlinedIcon />
             <NotificationsNoneOutlinedIcon />
             <IconButton>
-                <AutoAwesomeMosaicOutlinedIcon onClick={handleDrawerToggle} />
+                <AutoAwesomeMosaicOutlinedIcon onClick={() => handleDrawerToggle()} />
             </IconButton>
         </div>
     );
