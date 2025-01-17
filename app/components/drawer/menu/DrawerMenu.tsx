@@ -1,18 +1,22 @@
 "use client"
 
-import { mainColors } from '@/app/styles/globalStyles';
+import { PATH_TO } from '@/app/routes/globalRoutes';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import FolderIcon from '@mui/icons-material/Folder';
 import SearchIcon from '@mui/icons-material/Search';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import DrawerMenuHeader from './header/DrawerMenuHeader';
-import { menuContentMaxWidth, menuDefaultWidth } from './styles';
+import { menuContentMaxWidth, menuDefaultWidth } from './header/styles';
+
 interface DrawerMenuProps {
     isDrawerOpen: boolean;
     handleDrawerToggle: VoidFunction;
 }
 
 export default function DrawerMenu({ isDrawerOpen, handleDrawerToggle }: DrawerMenuProps): React.ReactNode {
+
+    const router = useRouter();
     return (
         <Drawer
             variant="persistent"
@@ -31,7 +35,7 @@ export default function DrawerMenu({ isDrawerOpen, handleDrawerToggle }: DrawerM
                 <DrawerMenuHeader handleDrawerToggle={handleDrawerToggle} />
 
                 <div className={`pt-5 max-w-[${menuContentMaxWidth}]`}>
-                    <ListItem disablePadding className={`border ${mainColors.grey} rounded-md`}>
+                    <ListItem disablePadding className={`border gray rounded-md`}>
                         <ListItemButton>
                             <ListItemIcon>
                                 <SearchIcon />
@@ -50,7 +54,16 @@ export default function DrawerMenu({ isDrawerOpen, handleDrawerToggle }: DrawerM
                     </ListItem>
 
                     <ListItem disablePadding>
-                        <ListItemButton>
+                        <ListItemButton onClick={() => router.push(PATH_TO.projects)}>
+                            <ListItemIcon>
+                                <FolderIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Meus Projetos" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={() => router.push(PATH_TO.projects)}>
                             <ListItemIcon>
                                 <FolderIcon />
                             </ListItemIcon>

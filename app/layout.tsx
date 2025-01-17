@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geistSans } from "./styles/fonts/fonts";
+import { poppins } from "./styles/fonts/fonts";
+import DrawerWrapper from "./components/drawer/DrawerWrapper";
 
 export const metadata: Metadata = {
   title: "Teste Cubevis",
@@ -10,9 +11,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const defaultLang = "pt-BR"
   return (
-    <html lang={defaultLang}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
-        {children}
+    <html lang={defaultLang} suppressHydrationWarning>
+      <body className={`${poppins.variable} antialiased`} >
+        <DrawerWrapper>
+          {children}
+        </DrawerWrapper>
       </body>
     </html>
   )

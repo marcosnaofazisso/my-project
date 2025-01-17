@@ -1,12 +1,11 @@
 "use client"
 
-import { mainColors } from '@/app/styles/globalStyles';
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import { IconButton } from '@mui/material';
 import Image from 'next/image';
-import profileIcon from '../../../../public/img/profile.png';
+import profileIcon from '../../../../../public/img/profile.png';
 
 interface DrawerMenuProps {
     handleDrawerToggle: VoidFunction;
@@ -14,7 +13,7 @@ interface DrawerMenuProps {
 
 export default function DrawerMenuHeader({ handleDrawerToggle }: DrawerMenuProps): React.ReactNode {
     return (
-        <div className={`flex flex-row items-center gap-2 ${mainColors.grey}`}>
+        <div className={`flex flex-row items-center gap-2 text-primary`}>
             <Image
                 src={profileIcon}
                 alt="profile image"
@@ -22,8 +21,8 @@ export default function DrawerMenuHeader({ handleDrawerToggle }: DrawerMenuProps
                 height={40}
                 className="rounded-full"
             />
-            <p>Nome do usuário</p>
-            <KeyboardArrowDownOutlinedIcon />
+            <p className="col-gray">Nome do usuário</p>
+            <KeyboardArrowDownOutlinedIcon/>
             <NotificationsNoneOutlinedIcon />
             <IconButton>
                 <AutoAwesomeMosaicOutlinedIcon onClick={handleDrawerToggle} />

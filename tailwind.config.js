@@ -6,7 +6,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        purple: "#7c00be", 
+        purpleDark: "#640d93",
+        purpleLight: "#ecd9f5", 
+        primary: "#8a8a8a"
+      },
+    },
   },
   plugins: [],
 }

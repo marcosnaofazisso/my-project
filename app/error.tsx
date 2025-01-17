@@ -1,30 +1,23 @@
 "use client"
 
-import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import serverErrorImage from '../public/img/server-error.png';
 
-interface ErrorBoundaryProps {
-    children: React.ReactNode;
-}
-
-export default function ErrorPage({ children }: ErrorBoundaryProps) {
-    const [hasError, setHasError] = useState(false);
-
-    useEffect(() => {
-        const handleError = () => setHasError(true);
-        window.addEventListener('error', handleError);
-
-        return () => {
-            window.removeEventListener('error', handleError);
-        };
-    }, []);
-
-    if (hasError) {
-        return (
-            <div>
-                <h1>Something went wrong!</h1>
-            </div>
-        );
-    }
-
-    return children;
+export default function ErrorPage() {
+    return (
+        <div className="flex flex-col items-center h-screen bg-gray-100">
+            <h1 className="text-2xl font-bold mt-8">Erro de servidor</h1>
+            <p className="font-normal mt-4">Estamos trabalhando para resolver os problemas o quanto antes, desculpe o transtorno.</p>
+            <Image
+                src={serverErrorImage}
+                alt="Not Found"
+                width={500}
+                height={500}
+            />
+            <Link href="/" className="mt-4 text-purple hover:underline">
+                Voltar para a página inicial
+            </Link>
+        </div>
+    );
 }
