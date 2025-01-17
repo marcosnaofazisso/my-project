@@ -15,7 +15,7 @@ export default function ErrorPage() {
                 width={500}
                 height={500}
             />
-            <Link href="/" className="mt-4 text-purple hover:underline">
+            <Link href="../" className="mt-4 text-purple hover:underline">
                 Voltar para a página inicial
             </Link>
         </div>

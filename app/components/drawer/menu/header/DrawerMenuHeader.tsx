@@ -1,18 +1,20 @@
 "use client"
 
 import { useDrawerStore } from '@/app/data/drawer/storeDrawer';
+import { useStoreUser } from '@/app/data/user/storeUser';
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import { IconButton } from '@mui/material';
 import Image from 'next/image';
 import profileIcon from '../../../../../public/img/profile.png';
-import { useStoreUser } from '@/app/data/user/storeUser';
+import { useRouter } from 'next/navigation';
+import { PATH_TO } from '@/app/routes/globalRoutes';
 
 export default function DrawerMenuHeader(): React.ReactNode {
 
+    const router = useRouter()
     const { name } = useStoreUser()
-
     const { toggleDrawer } = useDrawerStore()
 
     return (
@@ -26,10 +28,12 @@ export default function DrawerMenuHeader(): React.ReactNode {
             />
             <p className="col-gray">{name ? name : "Visitante"}</p>
             <KeyboardArrowDownOutlinedIcon />
-            <NotificationsNoneOutlinedIcon />
-            <IconButton>
-                <AutoAwesomeMosaicOutlinedIcon onClick={toggleDrawer} />
-            </IconButton>
+            <div className='ml-auto gap-2'>
+                <NotificationsNoneOutlinedIcon className='hover:text-purple hover:cursor-pointer' onClick={() => router.push(PATH_TO.notifications)} />
+                <IconButton onClick={toggleDrawer}>
+                    <AutoAwesomeMosaicOutlinedIcon />
+                </IconButton>
+            </div>
         </div>
     );
 }

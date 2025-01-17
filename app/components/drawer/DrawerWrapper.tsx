@@ -4,8 +4,6 @@ import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaic
 import { IconButton } from '@mui/material';
 
 import { useDrawerStore } from '@/app/data/drawer/storeDrawer';
-import Image from 'next/image';
-import profileIcon from '../../../public/img/profile.png';
 import DrawerMenu from './menu/DrawerMenu';
 
 export default function DrawerWrapper({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -19,23 +17,11 @@ export default function DrawerWrapper({ children }: Readonly<{ children: React.R
                 <div className='flex flex-row items-center gap-2 p-4'>
                     <IconButton
                         edge="start"
-                        className="gray"
                         color="inherit"
+                        className='fixed top-4 left-8 p-3 hover:text-purple'
                         aria-label="open drawer"
                         onClick={toggleDrawer}
-                        sx={{
-                            position: 'fixed',
-                            top: 8,
-                            left: 8,
-                        }}
                     >
-                        <Image
-                            src={profileIcon}
-                            alt="profile image"
-                            width={40}
-                            height={40}
-                            className="rounded-full"
-                        />
                         <AutoAwesomeMosaicOutlinedIcon className='text-primary' />
                     </IconButton>
                 </div>
